@@ -1,0 +1,33 @@
+<group name="netics_custom_rules">
+
+  <rule id="100010" level="10">
+    <if_sid>5501</if_sid>
+    <program_name>sudo</program_name> 
+    <match>session opened for user root</match>
+    <description>Critical Privilege Escalation: Sudo session opened for root!</description>
+    <mitre>
+      <id>T1548.003</id> 
+    </mitre>
+  </rule>
+
+  <rule id="100011" level="5">
+    <if_sid>100010</if_sid>
+    <match>by mamahda</match>
+    <description>sudo privilege is accessed by trusted admin (mamahda)</description>
+  </rule>
+
+  <rule id="100020" level="6" frequency="2" timeframe="60">
+    <if_sid>5557</if_sid>
+    <match>password check failed</match>
+    <description>Suspicious authentication: 2 incorret password attemp</description>
+  </rule>
+
+  <rule id="100030" level="10">
+    <if_sid>81101</if_sid>
+    <match>idVendor=3537</match>
+    <match>idProduct=2106</match>
+    <time>08:00-15:00</time>
+    <description>Gamepad connected during restricted hours (08:00-15:00)</description>
+  </rule>
+
+</group>
