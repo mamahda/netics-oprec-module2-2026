@@ -1,2 +1,3 @@
 sudo auditctl -a always,exit -F arch=b64 -S openat -F path=/dev/video0 -F key=camera
 sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/dev/snd/ -F key=mic
+sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/home/mamahda/dotfiles -F exe=/usr/bin/bash -k dotfiles_bash

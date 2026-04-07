@@ -589,7 +589,15 @@ sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/dev/snd/ -F key=mic
 
 ---
 
-### 4. Alert Rule 100030 & 100031 - Gamepad Policy Violation
+### 4. Alert Rule 100030 - Gamepad Connected
+
+![Gamepad Connected Alert](./media/5.png)
+
+> _Alert level 3 terpicu saat gamepad terhubung ke perangkat_
+
+---
+
+### 5. Alert Rule 100031 - Gamepad Policy Violation
 
 ![Gamepad Alert](./media/6.png)
 
@@ -597,7 +605,7 @@ sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/dev/snd/ -F key=mic
 
 ---
 
-### 5. Alert Rule 100040 - Camera Access
+### 6. Alert Rule 100040 - Camera Access
 
 ![Camera Access Alert](./media/7.png)
 
@@ -605,7 +613,7 @@ sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/dev/snd/ -F key=mic
 
 ---
 
-### 6. Alert Rule 100050 - Microphone Access
+### 7. Alert Rule 100050 - Microphone Access
 
 ![Microphone Access Alert](./media/8.png)
 
@@ -613,7 +621,7 @@ sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/dev/snd/ -F key=mic
 
 ---
 
-### 7. Alert Rule 100060 - FIM Dotfiles Modified
+### 8. Alert Rule 100060 - FIM Dotfiles Modified
 
 ![FIM Dotfiles Modified Alert](./media/9.png)
 
@@ -621,7 +629,7 @@ sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/dev/snd/ -F key=mic
 
 ---
 
-### 8. Alert Rule 100070 - FIM Dotfiles Created
+### 9. Alert Rule 100070 - FIM Dotfiles Created
 
 ![FIM Dotfiles Created Alert](./media/10.png)
 
@@ -629,7 +637,7 @@ sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/dev/snd/ -F key=mic
 
 ---
 
-### 9. Alert Rule 100080 - FIM Dotfiles Deleted
+### 10. Alert Rule 100080 - FIM Dotfiles Deleted
 
 ![FIM Dotfiles Deleted Alert](./media/11.png)
 
