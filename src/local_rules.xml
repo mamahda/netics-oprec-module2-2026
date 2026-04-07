@@ -107,22 +107,4 @@
     </mitre>
   </rule>
 
-  <rule id="400001" level="10">
-    <if_sid>80700</if_sid>
-    <field name="audit.key">dotfiles_bash</field>
-    <description>Audit: Bash accessed dotfiles</description>
-    <mitre>
-      <id>T1059</id>
-    </mitre>
-  </rule>
-
-  <rule id="400003" level="16" frequency="2" timeframe="10">
-    <if_matched_sid>400001,100080</if_matched_sid>
-    <description>High Alert: Bash modified dotfiles (possible malicious script)</description>
-    <mitre>
-      <id>T1059</id>
-      <id>T1546</id>
-    </mitre>
-  </rule>
-
 </group>
