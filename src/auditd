@@ -1,0 +1,2 @@
+sudo auditctl -a always,exit -F arch=b64 -S openat -F path=/dev/video0 -F key=camera
+sudo auditctl -a always,exit -F arch=b64 -S openat -F dir=/dev/snd/ -F key=mic

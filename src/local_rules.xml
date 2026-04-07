@@ -1,0 +1,109 @@
+<group name="netics_custom_rules">
+  <!-- 1 -->
+  <!-- Alert ketika ada penggunaan super user privilege -->
+  <rule id="100010" level="10">
+    <if_sid>5501</if_sid>
+    <program_name>sudo</program_name>
+    <match>session opened for user root</match>
+    <description>Privilege Escalation: Sudo session opened as root user</description>
+    <mitre>
+      <id>T1548.003</id>
+    </mitre>
+  </rule>
+
+  <!-- 2 -->
+  <!-- Ignore alert ketika penggunaan super user oleh user mamahda -->
+  <rule id="100011" level="5">  
+    <if_sid>100010</if_sid>
+    <match>by mamahda</match>
+    <description>Privilege Escalation (Ignored): Trusted admin sudo session (mamahda)</description>
+  </rule>
+
+  <!-- 3 -->
+  <!-- Alert ketika ada input password salah 2 kali -->
+  <rule id="100020" level="6" frequency="2" timeframe="60">
+    <if_sid>5557</if_sid>
+    <match>password check failed</match>
+    <description>Authentication Failure: Multiple failed password attempts detected</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+  </rule>
+
+  <!-- 4 -->
+  <!-- Ignore alert ketika ada gamepad diluar jam kerja -->
+  <rule id="100030" level="3">
+    <if_sid>81101</if_sid>
+    <match>New USB device found, idVendor=3537, idProduct=2106,</match>
+    <description>Device Connection: Gamepad connected (allowed hours)</description>
+  </rule>
+
+  <!-- 5 -->
+  <!-- Alert ketika ada gamepad yang terhubung saat jam kerja (08:00-15:00 UTC-7) -->
+  <rule id="100031" level="15">
+    <if_sid>100030</if_sid>
+    <time>01:00-08:00</time>
+    <description>Policy Violation: Gamepad connected during restricted hours</description>
+    <mitre>
+      <id>T1200</id>
+    </mitre>
+  </rule>
+
+  <!-- 6 -->
+  <!-- Alert kerika kamera di akses oleh user -->
+  <rule id="100040" level="12">
+    <if_sid>80700</if_sid>
+    <field name="audit.key">camera</field>
+    <description>Privacy Monitoring: Camera access detected</description>
+    <mitre>
+      <id>T1125</id>
+    </mitre>
+  </rule>
+
+  <!-- 7 -->
+  <!-- Alert kerika microphone di akses oleh user -->
+  <rule id="100050" level="12">
+    <if_sid>80700</if_sid>
+    <field name="audit.key">mic</field>
+    <description>Privacy Monitoring: Microphone access detected</description>
+    <mitre>
+      <id>T1123</id>
+    </mitre>
+  </rule>
+
+  <!-- 8 -->
+  <!-- Alert untuk FIM ada perubahan pada path /home/mamahda/dotfiles/ -->
+  <rule id="100060" level="14">
+    <if_sid>550</if_sid>
+    <field name="file">/home/mamahda/dotfiles/</field>
+    <time>12:00-20:00</time>
+    <description>Policy Violation: Dotfiles modified during restricted hours</description>
+    <mitre>
+      <id>T1546</id>
+    </mitre>
+  </rule>
+
+  <!-- 9 -->
+  <!-- Alert untuk FIM ada file baru pada path /home/mamahda/dotfiles/ -->
+  <rule id="100070" level="14">
+    <if_sid>554</if_sid>
+    <field name="file">/home/mamahda/dotfiles/</field>
+    <time>12:00-20:00</time>
+    <description>Policy Violation: New file created in dotfiles during restricted hours</description>
+    <mitre>
+      <id>T1546</id>
+    </mitre>
+  </rule>
+
+  <!-- 10 -->
+  <!-- Alert untuk FIM ada file yang dihapus pada path /home/mamahda/dotfiles/ -->
+  <rule id="100080" level="15">
+    <if_sid>553</if_sid>
+    <field name="file">/home/mamahda/dotfiles/</field>
+    <time>12:00-20:00</time>
+    <description>Policy Violation: Dotfiles file deleted during restricted hours</description>
+    <mitre>
+      <id>T1070</id>
+    </mitre>
+  </rule>
+</group>

@@ -1,0 +1,10 @@
+- check discover log:     sudo tail -f /var/ossec/logs/alerts/alerts.json | grep cachy
+- check archive log:      sudo tail -f  /var/ossec/logs/archives/archives.log | grep cachy
+
+- restart wazuh manager:  sudo systemctl restart wazuh-manager
+- restart wazuh agent:    sudo systemctl restart wazuh-agent
+
+- custom rule:            sudo vim /var/ossec/etc/rules/local_rules.xml
+- config agent:           sudo -e /var/ossec/etc/ossec.conf
+
+- test log:               sudo /var/ossec/bin/wazuh-logtest
